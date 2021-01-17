@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row">
+<form class="details-form" #detailsForm="ngForm">
+  <div class="details-form__top">
+    Details form
+  </div>
+  <mat-form-field class="details-form__form-field" hintLabel="min 3, Max 25 characters." >
+    <mat-label class="details-form__form-field__label">First name</mat-label>
+    <input class="details-form__form-field__input" matInput placeholder="please enter first name" [(ngModel)]="person.firstName" name="firstName" minlength="3" maxlength="25" required
+    #firstName='ngModel' >
+    <mat-error *ngIf="firstName.hasError">
+     First name is not valid
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="details-form__form-field" hintLabel="min 3, Max 25 characters." >
+    <mat-label class="details-form__form-field__label">Middle name</mat-label>
+    <input class="details-form__form-field__input" matInput placeholder="please enter Middle name" [(ngModel)]="person.middleName" name="middleName" minlength="3" maxlength="25" required
+    #middleName='ngModel'>
+    <mat-error *ngIf="firstName.hasError">
+      Middle name is not valid
+     </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="details-form__form-field" hintLabel="min 3, Max 25 characters." >
+    <mat-label class="details-form__form-field__label">Last name</mat-label>
+    <input class="details-form__form-field__input" matInput placeholder="please enter last name" [(ngModel)]="person.lastName" name="lastName" minlength="3" maxlength="25" required
+    #lastName='ngModel'>
+    <mat-error *ngIf="firstName.hasError">
+      Last name is not valid
+     </mat-error>
+  </mat-form-field>
+
+
+    <mat-form-field class="details-form__form-field"appearance="fill">
+      <mat-label class="details-form__form-field__label">Enter your email</mat-label>
+      <input class="details-form__form-field__input" matInput placeholder="pat@example.com"  [(ngModel)]="person.email" required name="email"
+      #email='ngModel'>
+    </mat-form-field>
+  
+  
+
+  <!-- <mat-form-field class="details-form__form-field">
+    <mat-label>Age</mat-label>
+    <mat-select name="age" [(ngModel)]="person.age">
+      <mat-option *ngFor="let age of ages" [value]="age" >
+        {{age}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field> -->
+
+  <mat-form-field class="details-form__form-field" appearance="fill">
+    <mat-label class="details-form__form-field__label">Birth date</mat-label>
+    <input matInput [matDatepicker]="dob"  [(ngModel)]="person.dob" name="dob" #picker ='ngModel'>
+    <mat-datepicker-toggle matSuffix [for]="dob">
+      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #dob></mat-datepicker>
+  </mat-form-field>
+
+  <div class="details-form__form-field">
+    <label class="details-form__form-field__label details-form__form-field--block">Pick your gender</label>
+    <mat-radio-group  aria-label="Select gender"  name="genders" class="details-form__form-field__gender" [(ngModel)]="person.gender">
+      <mat-radio-button value="Male">Male</mat-radio-button>
+      <mat-radio-button value="Female">Female</mat-radio-button>
+      <mat-radio-button value="Trangender">Transgender</mat-radio-button>
+      <mat-radio-button value="NotProvided">Prefer not to say</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <!-- <mat-form-field class="details-form__form-field">
+    <mat-label class="details-form__form-field__label">Address</mat-label>
+    <textarea  class="details-form__form-field__input" matInput placeholder="please enter address" value="" [(ngModel)]="person.Address" name="address"></textarea>
+  </mat-form-field> -->
+  <div class="details-form__form-field">
+    <mat-checkbox ngModel name="consented" [(ngModel)]="person.consented" required   #consentedCheck='ngModel'>I consent to disclose my personal information</mat-checkbox>
+  </div>
+  <button class="details-form__submit" mat-flat-button color="accent" (click)="onDetailsFormSubmit()">Save details</button>
+</form>
+</div>
+</div>
+
